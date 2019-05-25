@@ -12,12 +12,12 @@
 
 <body>
     <div class="kasaHeader">
-        <h1>Kasa</h1>
+        <h1>Book API</h1>
     </div>
     <div class="kasaContainer">
         <section class="kasaMain">
             <div class="kundAdress">
-                <h2>Enter your details</h2>
+                <h2>Fyll in dina uppgifter</h2>
                 <form>
                     <label for="nämn"><b>Nämn</b></label>
                     <input type="text" placeholder="Skriv in ditt för och efternamn" name="nämn" required>
@@ -29,7 +29,7 @@
                     <label for="postkod"><b>Postkod</b></label>
                     <input type="number" placeholder="Postkod" name="postkod" required>
 
-                    <button type="submit">Försätta till checkout</button>
+                    <button class="checkout" type="submit">Försätta till checkout</button>
 
                 </form>
 
@@ -53,20 +53,26 @@
             <div class="productList">
                 <table>
                     <th>ISBN</th>
-                    <tr>
-                        <td>29309830</td>
+<?php 
+//file is opened using fopen() function 
+$my_file = fopen("books.txt", "rw"); 
+while (! feof ($my_file)) 
+  { ?>
+            <tr>
+                <td> <?php echo fgets($my_file); ?></td>
                     </tr>
-                    <tr>
-                        <td>938493 </td>
-                    </tr>
-                    <tr>
-                        <td>9849384</td>
-                    </tr>
+<?php
+  }  
+// file is closed using fclose() function 
+fclose($my_file); 
+?>
                 </table>
             </div>
         </aside>
-
     </div>
+<form action="./CSV/csv_file.php">
+    <input type="submit" value="Försätta>>">
+</form>
 </body>
 
 </html>

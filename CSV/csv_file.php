@@ -1,6 +1,6 @@
 <pre>
 <?php
-$filename = '../UploadFiles/UploadedFiles/books.txt';
+$filename = '../UploadedFiles/books.txt';
 // The nested array to hold all the arrays
 $books = [];
 $books[] = ['ISBN', 'Book title', 'Author'];
@@ -18,14 +18,14 @@ if ($file_handle = fopen($filename, 'r')) {
 if ($books) {
     $filename = 'new_books.csv';
     $file_to_write = fopen($filename, 'w');
-    $everything_is_awesome = true;
+    $file_success = true;
     foreach ($books as $book) {
 //        $book = fill_book($book[0]);
         //var_dump($book);
-        $everything_is_awesome = $everything_is_awesome && fputcsv($file_to_write, $book);
+        $file_success = $file_success && fputcsv($file_to_write, $book);
     }
     fclose($file_to_write);
-    if ($everything_is_awesome) {
+    if ($file_success) {
         echo '<a href="' . $filename . '">Download file</a>';
     } else {
         echo 'There is some error';
