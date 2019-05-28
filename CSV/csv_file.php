@@ -1,5 +1,6 @@
 <pre>
 <?php
+//include_once '../charge.php';
 $filename = '../UploadedFiles/books.txt';
 // The nested array to hold all the arrays
 $books = [];
@@ -14,7 +15,7 @@ if ($file_handle = fopen($filename, 'r')) {
     fclose($file_handle);
 }
 // Display the code in a readable format
-//var_dump($books);
+var_dump($books);
 if ($books) {
     $filename = 'new_books.csv';
     $file_to_write = fopen($filename, 'w');
