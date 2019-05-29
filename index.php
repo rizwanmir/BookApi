@@ -18,7 +18,7 @@
         </div>
         </form>
     </div>
-
+<pre>
 <?php
 if (isset($_FILES)) {
     $check = true;
@@ -30,9 +30,9 @@ if (isset($_FILES)) {
    //echo realpath('./');
   // die;
 if ($check) {
-       // $date = date('Ymd_His');
+       $date = date('Ymd_His');
        // $file_id = uniqid();
-      // $path = realpath('./') . '/UploadedFiles/' . $file_id; // . '_' . $_FILES['books_file']['name'];
+     // $path = realpath('./') . '/UploadedFiles/' . $date . '_' . $_FILES['fileToUpload']['name'];
       $path = realpath('./') . '/UploadedFiles/' . $_FILES['fileToUpload']['name'];
       // echo $path;
         // $sql = "INSERT INTO files (file, file_name) VALUES ('$file_id', '$_FILES["books_file"]["name"]')";
