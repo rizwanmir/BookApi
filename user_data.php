@@ -1,17 +1,11 @@
-<?php
-// show isbn books and form to fill
-?>
-
 <!DOCTYPE html>
 <html>
-
 <head>
-
     <link rel="stylesheet" href="./StyleSheets/main.css" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-</head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    </head>
 
 <body>
     <div class="kasaHeader">
@@ -37,9 +31,9 @@
                     <label for="country"><b>Land</b></label>
                     <input type="text" placeholder="Skriv in ditt Land" class="form-control" name="country">
                     <label for="phone"><b>Telefonnummer</b></label>
-                    <input type="text" placeholder="Skriv in ditt telefonnummer" class="form-control" name="phone">
-
+                    <input type="text" placeholder="Skriv in ditt telefonnummer" class="form-control" name="phone">     
             </div>
+            
             <div>
             <h2>Betalning</h2>
                 <div class="form-row">
@@ -50,8 +44,7 @@
                 <!-- Used to display form errors -->
                 <div id="card-errors"></div>
             </div>
-        
-        <button class="checkout">Submit Payment</button>
+            <button type="submit" name="checkout" class="checkout"> Submit Payment </button>
             </div>
 </form>
 </section> 
@@ -63,6 +56,7 @@
 <?php 
 //file is opened using fopen() function 
 $my_file = fopen("books.txt", "rw"); 
+// showing the ISBN numbers of uploaded file
 while (! feof ($my_file)) 
   { ?>
             <tr>
@@ -83,7 +77,6 @@ fclose($my_file);
     <script src="https://js.stripe.com/v3/"></script>
 
     <!-- Your JS File -->
-    <script src="charge.js"></script>
+    <script src="./js/charge.js"></script>
 </body>
-
 </html>

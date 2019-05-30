@@ -20,22 +20,25 @@
     </div>
 <pre>
 <?php
+include "db/config.php";
+
 if (isset($_FILES)) {
     $check = true;
+// Check if the uploaded file is other than .txt file
     if ($_FILES['fileToUpload']['type'] !== 'text/plain') {
         $check = false;
     }
-   // print_r($_FILES);
-   // echo '<hr>';
-   //echo realpath('./');
-  // die;
+
 if ($check) {
-       $date = date('Ymd_His');
-       // $file_id = uniqid();
-     // $path = realpath('./') . '/UploadedFiles/' . $date . '_' . $_FILES['fileToUpload']['name'];
-      $path = realpath('./') . '/UploadedFiles/' . $_FILES['fileToUpload']['name'];
-      // echo $path;
-        // $sql = "INSERT INTO files (file, file_name) VALUES ('$file_id', '$_FILES["books_file"]["name"]')";
+   $file = $_FILES['fileToUpload']['name'];
+    $file_id = uniqid();
+    // save file in the folder with uniqeid
+     $path = realpath('./') . '/UploadedFiles/' . $file_id;
+    // query to save file name in database with unique id
+      $sql = "INSERT INTO files (file_id, file_name) VALUES ('$file_id', '$file')";
+      $result =$pdo->prepare($sql);
+        $result-> execute();
+
         if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], "$path")) {
             echo "Filen ". basename( $_FILES["fileToUpload"]["name"]). " har laddat up.";
             ?>
